@@ -1,3 +1,11 @@
+---
+noteId: "7bb242c07b5811eaba3dfd978d434a83"
+tags: []
+
+---
+
+![image of the 8-ball](./public/8ballimage.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
