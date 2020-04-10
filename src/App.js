@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+/* eslint-disable react/jsx-filename-extension */
+import React, { useReducer } from 'react';
+import { StateProvider } from './context';
 import './App.css';
+import InputForm from './components/InputForm';
+import EightBall from './components/EightBall';
 
 function App() {
+  const initialState = {
+    question: '',
+    response: '',
+  };
+
+  const reducer = (state, action) => {
+    const { question } = action;
+    switch (action.type) {
+      case 'ACTION_GET_RESPONSE':
+        return {
+          ...state,
+          question,
+        };
+      default:
+        return state;
+    }
+  };
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StateProvider value={useReducer(reducer, initialState)}>
+        <EightBall />
+      </StateProvider>
     </div>
   );
 }
